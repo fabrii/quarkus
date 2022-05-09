@@ -1,6 +1,6 @@
 package io.quarkus.gradle.tasks;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.gradle.api.artifacts.Configuration;
 import org.gradle.api.tasks.CompileClasspath;

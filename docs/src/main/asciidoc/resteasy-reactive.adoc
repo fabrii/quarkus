@@ -6,12 +6,12 @@ https://github.com/quarkusio/quarkus/tree/main/docs/src/main/asciidoc
 = Writing REST Services with RESTEasy Reactive
 
 include::./attributes.adoc[]
-:jaxrsapi: https://javadoc.io/doc/javax.ws.rs/javax.ws.rs-api/2.1.1
+:jaxrsapi: https://javadoc.io/doc/jakarta.ws.rs/jakarta.ws.rs-api/2.1.1
 :jaxrsspec: /specs/jaxrs/2.1/index.html
 :jdkapi: https://docs.oracle.com/en/java/javase/11/docs/api/java.base
 :mutinyapi: https://smallrye.io/smallrye-mutiny/apidocs
 :httpspec: https://tools.ietf.org/html/rfc7231
-:jsonpapi: https://javadoc.io/doc/javax.json/javax.json-api/1.1.4
+:jsonpapi: https://javadoc.io/doc/jakarta.json/jakarta.json-api/1.1.4
 :vertxapi: https://javadoc.io/doc/io.vertx/vertx-core/latest/index.html
 :resteasy-reactive-api: https://javadoc.io/doc/io.quarkus.resteasy.reactive/resteasy-reactive/{quarkus-version}
 :resteasy-reactive-common-api: https://javadoc.io/doc/io.quarkus.resteasy.reactive/resteasy-reactive-common/{quarkus-version}
@@ -62,8 +62,8 @@ You can now write your first endpoint in the `org.acme.rest.Endpoint` class:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("")
 public class Endpoint {
@@ -102,8 +102,8 @@ class annotation. For example, this defines a `rest/hello` endpoint:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("rest")
 public class Endpoint {
@@ -124,8 +124,8 @@ You can set the root path for all rest endpoints using the `@ApplicationPath` an
 ----
 package org.acme.rest;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("/api")
 public static class MyApplication extends Application {
@@ -179,8 +179,8 @@ package org.acme.rest;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.HttpMethod;
+import jakarta.ws.rs.Path;
 
 @Retention(RetentionPolicy.RUNTIME)
 @HttpMethod("CHEESE")
@@ -284,8 +284,8 @@ Then you could obtain all the various parameters with this endpoint method:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 import org.jboss.resteasy.reactive.RestCookie;
 import org.jboss.resteasy.reactive.RestForm;
@@ -336,8 +336,8 @@ the following endpoint will serve requests for `/hello/stef/23` and `/hello` but
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("hello")
 public class Endpoint {
@@ -420,7 +420,7 @@ that will hold this information like so:
 
 [source,java]
 ----
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.resteasy.reactive.PartType;
 import org.jboss.resteasy.reactive.RestForm;
@@ -454,11 +454,11 @@ This POJO could be used in a Resource method like so:
 
 [source,java]
 ----
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.resteasy.reactive.MultipartForm;
 
@@ -491,7 +491,7 @@ that will hold the information we want to expose as:
 
 [source,java]
 ----
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.resteasy.reactive.PartType;
 import org.jboss.resteasy.reactive.RestForm;
@@ -511,10 +511,10 @@ And then expose this POJO via a Resource like so:
 
 [source,java]
 ----
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 @Path("multipart")
 public class Endpoint {
@@ -580,10 +580,10 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.NewCookie;
 
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder;
@@ -623,8 +623,8 @@ import org.jboss.resteasy.reactive.Header;
 import org.jboss.resteasy.reactive.ResponseHeaders;
 import org.jboss.resteasy.reactive.ResponseStatus;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("")
 public class Endpoint {
@@ -653,8 +653,8 @@ which will be mapped to a response exactly according to the previously described
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import io.smallrye.mutiny.Uni;
 
@@ -689,9 +689,9 @@ text data:
 ----
 package org.acme.rest;
 
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
 
@@ -728,11 +728,11 @@ and specifying that each element should be <<json,serialised to JSON>> with
 ----
 package org.acme.rest;
 
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import org.jboss.resteasy.reactive.RestStreamElementType;
 
@@ -838,9 +838,9 @@ package org.acme.rest;
 
 import java.security.Principal;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.SecurityContext;
 
 @Path("user")
 public class Endpoint {
@@ -854,7 +854,7 @@ public class Endpoint {
 ----
 
 You can also inject those context objects using 
-https://javadoc.io/static/javax.inject/javax.inject/1/javax/inject/Inject.html[`@Inject`] on fields of the same
+https://javadoc.io/static/jakarta.inject/jakarta.inject/1/javax/inject/Inject.html[`@Inject`] on fields of the same
 type:
 
 [source,java]
@@ -863,11 +863,11 @@ package org.acme.rest;
 
 import java.security.Principal;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.SecurityContext;
 
 @Path("user")
 public class Endpoint {
@@ -891,9 +891,9 @@ package org.acme.rest;
 
 import java.security.Principal;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.SecurityContext;
 
 @Path("user")
 public class Endpoint {
@@ -988,8 +988,8 @@ A very simple JAX-RS Resource that uses `Person` could be:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("person")
 public class Person {
@@ -1279,7 +1279,7 @@ You can override this behaviour using the
 https://javadoc.io/doc/io.smallrye.common/smallrye-common-annotation/1.5.0/io/smallrye/common/annotation/Blocking.html[`@Blocking`]
 and
 https://javadoc.io/doc/io.smallrye.common/smallrye-common-annotation/1.5.0/io/smallrye/common/annotation/NonBlocking.html[`@NonBlocking`]
-annotations. This can be applied at the method, class or `javax.ws.rs.core.Application` level.
+annotations. This can be applied at the method, class or `jakarta.ws.rs.core.Application` level.
 
 The example below will override the default behaviour and always run on a worker thread, even though it returns a `Uni`.
 
@@ -1287,8 +1287,8 @@ The example below will override the default behaviour and always run on a worker
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import io.smallrye.common.annotation.Blocking;
 
@@ -1315,8 +1315,8 @@ package org.acme.rest;
 
 import java.time.Duration;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import io.smallrye.mutiny.Uni;
 
@@ -1332,13 +1332,13 @@ public class Endpoint {
 }
 ----
 
-If a method or class is annotated with `javax.transaction.Transactional` then it will also be treated as a blocking
+If a method or class is annotated with `jakarta.transaction.Transactional` then it will also be treated as a blocking
 method. This is because JTA is a blocking technology, and is generally used with other blocking technology such as
 Hibernate and JDBC. An explicit `@Blocking` or `@NonBlocking` on the class will override this behaviour.
 
 ==== Overriding the default behaviour
 
-If you want to override the default behaviour you can annotate a `javax.ws.rs.core.Application` subclass in your application
+If you want to override the default behaviour you can annotate a `jakarta.ws.rs.core.Application` subclass in your application
 with `@Blocking` or `@NonBlocking`, and this will set the default for every method that does not have an explicit annotation.
 
 Behaviour can still be overridden on a class or method level by annotating them directly, however all endpoints without
@@ -1355,10 +1355,10 @@ framework using link:{jaxrsapi}/javax/ws/rs/WebApplicationException.html[`WebApp
 ----
 package org.acme.rest;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.Path;
 
 @Path("cheeses/{cheese}")
 public class Endpoint {
@@ -1390,12 +1390,12 @@ package org.acme.rest;
 
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Response;
 
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 import org.jboss.resteasy.reactive.RestResponse;
@@ -1627,11 +1627,11 @@ package org.acme.rest.json;
 import io.vertx.core.http.HttpServerRequest;
 import org.jboss.logging.Logger;
 
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerRequestFilter;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.UriInfo;
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class LoggingFilter implements ContainerRequestFilter {
@@ -1689,9 +1689,9 @@ For example, if we have our own `Cheese` type on our endpoint:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
 
 class Cheese {
     public String name;
@@ -1730,12 +1730,12 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.ext.MessageBodyReader;
+import jakarta.ws.rs.ext.MessageBodyWriter;
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class CheeseBodyHandler implements MessageBodyReader<Cheese>, 
@@ -1794,11 +1794,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.ext.MessageBodyReader;
+import jakarta.ws.rs.ext.Provider;
 
 import org.jboss.resteasy.reactive.server.spi.ResteasyReactiveResourceInfo;
 import org.jboss.resteasy.reactive.server.spi.ServerMessageBodyWriter;
@@ -1841,9 +1841,9 @@ If we look at this endpoint:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
 
 @Path("cheese")
 public class Endpoint {
@@ -1868,12 +1868,12 @@ package org.acme.rest;
 
 import java.io.IOException;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.ext.Provider;
-import javax.ws.rs.ext.ReaderInterceptor;
-import javax.ws.rs.ext.ReaderInterceptorContext;
-import javax.ws.rs.ext.WriterInterceptor;
-import javax.ws.rs.ext.WriterInterceptorContext;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.ext.Provider;
+import jakarta.ws.rs.ext.ReaderInterceptor;
+import jakarta.ws.rs.ext.ReaderInterceptorContext;
+import jakarta.ws.rs.ext.WriterInterceptor;
+import jakarta.ws.rs.ext.WriterInterceptorContext;
 
 @Provider
 public class CheeseIOInterceptor implements ReaderInterceptor, WriterInterceptor {
@@ -1935,11 +1935,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.ext.ParamConverter;
-import javax.ws.rs.ext.ParamConverterProvider;
-import javax.ws.rs.ext.Provider;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.ext.ParamConverter;
+import jakarta.ws.rs.ext.ParamConverterProvider;
+import jakarta.ws.rs.ext.Provider;
 
 import org.jboss.resteasy.reactive.RestQuery;
 
@@ -2039,13 +2039,13 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.EntityTag;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.EntityTag;
+import jakarta.ws.rs.core.Request;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
 
 @Path("conditional")
 public class Endpoint {
@@ -2159,12 +2159,12 @@ The following endpoint supports serving cheese in plain text or JSON:
 ----
 package org.acme.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

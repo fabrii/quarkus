@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import javax.sql.DataSource;
 
 import org.junit.jupiter.api.AfterEach;

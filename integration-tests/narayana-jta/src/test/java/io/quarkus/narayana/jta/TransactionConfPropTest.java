@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 
-import javax.inject.Inject;
-import javax.transaction.TransactionManager;
+import jakarta.inject.Inject;
+import jakarta.transaction.TransactionManager;
 import javax.transaction.xa.XAException;
 import javax.transaction.xa.XAResource;
 import javax.transaction.xa.Xid;
